@@ -2,11 +2,11 @@
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable" data-theme="default" data-theme-colors="default">
 
 <head>
-
     <meta charset="utf-8" />
-    <title>Sign In | Velzon - Admin & Dashboard Template</title>
+    <title>@yield('pagetitle')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="@yield('keywords')" name="keywords" />
+    <meta content="@yield('description')" name="description" />
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('backend/images/favicon.ico') }}">
@@ -21,7 +21,7 @@
     <link href="{{ asset('backend/css/app.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
     <link href="{{ asset('backend/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
-
+    @yield('css-content')
 </head>
 
 <body>
@@ -95,5 +95,6 @@
     <script src="{{ asset('backend/js/pages/particles.app.js') }}"></script>
     <!-- password-addon init -->
     <script src="{{ asset('backend/js/pages/password-addon.init.js') }}"></script>
+    @yield('js-content')
 </body>
 </html>

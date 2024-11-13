@@ -1,4 +1,21 @@
 @extends('backend.layouts.auth_layout')
+
+{{-- Meta tag section --}}
+@section('description', Config::get('metatags.signin.description'))
+@section('keywords', Config::get('metatags.signin.keywords'))
+@section('pagetitle', Config::get('metatags.signin.pagetitle'))
+{{-- End Meta tag section --}}
+
+{{-- CSS section --}}
+@section('css-content')
+<style>
+    .card {
+        background:  #f3e6e6;
+    }
+</style>
+@endsection
+{{-- End CSS section --}}
+
 @section('page-content')
 <div class="row justify-content-center">
     <div class="col-md-8 col-lg-6 col-xl-5">
@@ -19,7 +36,7 @@
 
                         <div class="mb-3">
                             <div class="float-end">
-                                <a href="auth-pass-reset-basic.html" class="text-muted">Forgot password?</a>
+                                <a href="{{ route('password-reset') }}" class="text-muted">Forgot password?</a>
                             </div>
                             <label class="form-label" for="password-input">Password</label>
                             <div class="position-relative auth-pass-inputgroup mb-3">
@@ -56,10 +73,14 @@
         <!-- end card -->
 
         <div class="mt-4 text-center">
-            <p class="mb-0">Don't have an account ? <a href="auth-signup-basic.html" class="fw-semibold text-primary text-decoration-underline"> Signup </a> </p>
+            <p class="mb-0">Don't have an account ? <a href="{{ route('sign-up') }}" class="fw-semibold text-primary text-decoration-underline"> Signup </a> </p>
         </div>
 
     </div>
 </div>
 <!-- end row -->
+@endsection
+{{-- js section --}}
+@section('js-content')
+<script src="{{ asset('backend/js/customjs/signin.js') }}"></script>
 @endsection
