@@ -18,6 +18,11 @@ return [
         'description' => 'Password Reset - '.config('constants.PROJECT_NAME'),
         'keywords' => 'Password Reset - '.config('constants.PROJECT_NAME'),
         'pagetitle' => 'Password Reset - '.config('constants.PROJECT_NAME'),
+    ],
+    'dashboard' => [
+        'description' => 'Dashboard - '.config('constants.PROJECT_NAME'),
+        'keywords' => 'Dashboard - '.config('constants.PROJECT_NAME'),
+        'pagetitle' => 'Dashboard - '.config('constants.PROJECT_NAME'),
     ]
 ];
 ?>
