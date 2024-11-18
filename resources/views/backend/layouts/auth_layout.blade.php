@@ -21,6 +21,7 @@
     <link href="{{ asset('backend/css/app.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
     <link href="{{ asset('backend/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('backend/css/toastr/toastr.min.css') }}" rel="stylesheet" type="text/css" />
     @yield('css-content')
 </head>
 
@@ -67,7 +68,7 @@
                     <div class="col-lg-12">
                         <div class="text-center">
                             <p class="mb-0 text-muted">&copy;
-                                <script>document.write(new Date().getFullYear())</script> Velzon. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand
+                                {{ date('Y') }} Velzon. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand
                             </p>
                         </div>
                     </div>
@@ -84,17 +85,24 @@
     <script src="{{ asset('backend/libs/node-waves/waves.min.js') }}"></script>
     <script src="{{ asset('backend/libs/feather-icons/feather.min.js') }}"></script>
     <script src="{{ asset('backend/js/pages/plugins/lord-icon-2.1.0.js') }}"></script>
-    <script src="{{ asset('backend/js/plugins.js') }}"></script>
+    {{-- <script src="{{ asset('backend/js/plugins.js') }}"></script> --}}
     <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/toastify-js'></script>
-    <script type='text/javascript' src="{{ asset('backend/libs/choices.js') }}" ></script>
-    <script type='text/javascript' src="{{ asset('backend/scripts/choices.min.js') }} "></script>
-    <script type='text/javascript' src="{{ asset('backend/libs/flatpickr/flatpickr.min.js') }} "></script>
+
     <!-- particles js -->
     <script src="{{ asset('backend/libs/particles.js/particles.js') }}"></script>
     <!-- particles app js -->
     <script src="{{ asset('backend/js/pages/particles.app.js') }}"></script>
     <!-- password-addon init -->
+    <script src="{{ asset('backend/js/customjs/jquery-3.1.1.min.js') }}"></script>
+    <script src="{{ asset('backend/js/customjs/toastr/toastr.min.js') }}"></script>
+    <script src="{{ asset('backend/js/customjs/validate/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('backend/js/pages/password-addon.init.js') }}"></script>
+    <script src="{{ asset('backend/js/customjs/comman_function.js') }}"></script>
+    <script src="{{ asset('backend/js/customjs/ajaxfileupload.js') }}"></script>
+    <script src="{{ asset('backend/js/customjs/jquery.form.min.js') }}"></script>
+
+
+
     @yield('js-content')
 </body>
 </html>

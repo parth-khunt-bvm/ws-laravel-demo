@@ -1,2 +1,5 @@
 
 /*# sourceMappingURL=custom.min.css.map */
+.has-error{
+    border: 1px solid red;
+}
