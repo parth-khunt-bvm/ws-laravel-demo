@@ -17,6 +17,8 @@ return [
     */
 
     'default' => env('DB_CONNECTION', 'sqlite'),
+    'charset' => 'utf8',
+    'collation' => 'utf8_unicode_ci',
 
     /*
     |--------------------------------------------------------------------------

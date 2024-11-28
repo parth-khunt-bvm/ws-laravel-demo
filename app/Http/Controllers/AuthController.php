@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Session;
 use Hash;
-
+use App\Models\User;
 class AuthController extends Controller
 {
 
@@ -41,6 +41,26 @@ class AuthController extends Controller
 
     function signup(){
         return view('backend.pages.auth.signup');
+    }
+
+    function createAccount(Request $request){
+         // Validate the incoming request data
+        $request->validate([
+            'first_name' => 'required|string|max:191',
+            'last_name' => 'required|string|max:191',
+            'user_name' => 'required|string|max:191|unique:users,user_name',
+            'email' => 'required|email|max:191|unique:users,email',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        // Insert data into the users table
+        $user = User::create([
+            'user_name' => $request->user_name,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
     }
 
     function passReset(){
