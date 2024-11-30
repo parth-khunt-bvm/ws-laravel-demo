@@ -26,6 +26,19 @@
                     <h5 class="text-primary">Welcome Back !</h5>
                     <p class="text-muted">Sign in to continue to Velzon.</p>
                 </div>
+
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                @if (session('danger'))
+                    <div class="alert alert-danger">
+                        {{ session('danger') }}
+                    </div>
+                @endif
+
                 <div class="p-2 mt-4">
                     <form action="{{ route('sign-in-check') }}" method="POST" id="sign-in-form">@csrf
 

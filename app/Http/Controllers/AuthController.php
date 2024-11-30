@@ -7,10 +7,21 @@ use Auth;
 use Session;
 use Hash;
 use App\Models\User;
+use App\Services\Auth\RegiserServices;
+use App\Http\Requests\Auth\SignupRequest;
+use Exception;
+
 class AuthController extends Controller
 {
+    protected $regiserServices;
+
+    public function __construct(RegiserServices $RegiserServices)
+    {
+        $this->regiserServices = $RegiserServices;
+    }
 
     function signin(){
+
         return view('backend.pages.auth.signin');
     }
     function signInCheck(Request $request){
@@ -43,25 +54,28 @@ class AuthController extends Controller
         return view('backend.pages.auth.signup');
     }
 
-    function createAccount(Request $request){
-         // Validate the incoming request data
-        $request->validate([
-            'first_name' => 'required|string|max:191',
-            'last_name' => 'required|string|max:191',
-            'user_name' => 'required|string|max:191|unique:users,user_name',
-            'email' => 'required|email|max:191|unique:users,email',
-            'password' => 'required|string|min:8|confirmed',
-        ]);
+    public function createAccount(SignupRequest $request)
+    {
+        try {
+            $response = $request->addUser();
+            if ($response['status'] === 'success') {
+                return redirect()
+                    ->route('sign-in')
+                    ->with('success', $response['message']);
+            }
 
-        // Insert data into the users table
-        $user = User::create([
-            'user_name' => $request->user_name,
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+            // Handle potential failure from `addUser`
+            return redirect()
+                ->back()
+                ->with('danger', $response['message']);
+
+        } catch (Exception $e) {
+            return redirect()
+                ->back()
+                ->with('danger', 'An error occurred: ' . $e->getMessage());
+        }
     }
+
 
     function passReset(){
         return view('backend.pages.auth.password-reset');

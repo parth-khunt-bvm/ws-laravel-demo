@@ -97,12 +97,6 @@
     <script src="{{ asset('backend/js/customjs/toastr/toastr.min.js') }}"></script>
     <script src="{{ asset('backend/js/customjs/validate/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('backend/js/pages/password-addon.init.js') }}"></script>
-    <script src="{{ asset('backend/js/customjs/comman_function.js') }}"></script>
-    <script src="{{ asset('backend/js/customjs/ajaxfileupload.js') }}"></script>
-    <script src="{{ asset('backend/js/customjs/jquery.form.min.js') }}"></script>
-
-
-
     @yield('js-content')
 </body>
 </html>

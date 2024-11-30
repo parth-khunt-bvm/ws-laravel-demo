@@ -21,18 +21,115 @@
                     <p class="text-muted">Get your free Velzon account now</p>
                 </div>
                 <div class="p-2 mt-4">
-                    <form class="needs-validation" id="sign-up-form" method="POST" action="{{ route('create-account') }}">
+
+                    <form class="" id="sign-up-form" method="POST" action="{{ route('create-account') }}">
                         @csrf
                         <div class="row mb-3">
                             <!-- First Name -->
                             <div class="col-md-6">
-                                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter first name" required>
-                                <div class="invalid-feedback">Please enter your first name.</div>
+                                <input type="text" class="form-control " id="first_name" name="first_name" value="{{ old('first_name', 'Parth') }}" placeholder="Enter first name" required>
+                                @error('first_name')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <!-- Last Name -->
                             <div class="col-md-6">
-                                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter last name" required>
+                                <input type="text" class="form-control " id="last_name" name="last_name" value="{{ old('last_name', 'Khunt') }}" placeholder="Enter last name" required>
+                                @error('last_name')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <!-- Username -->
+                            <div class="col-md-6">
+                                <input type="text" class="form-control " id="user_name" name="user_name" value="{{ old('user_name', 'Parth@2024') }}" placeholder="Enter username" required>
+                                @error('user_name')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <!-- Email -->
+                            <div class="col-md-6">
+                                <input type="email" class="form-control " id="email" name="email" value="{{ old('email', 'Parth@gmail.com') }}" placeholder="Enter email address" required>
+                                @error('email')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <!-- Password -->
+                            <div class="col-md-6">
+                                <div class="position-relative auth-pass-inputgroup">
+                                    <input type="password" class="form-control pe-5 password-input " id="password" name="password" placeholder="Enter password" required>
+                                    <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon material-shadow-none" type="button" id="password-addon">
+                                        <i class="ri-eye-fill align-middle"></i>
+                                    </button>
+                                    @error('password')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <!-- Confirm Password -->
+                            <div class="col-md-6">
+                                <input type="password" class="form-control " id="password_confirmation" name="password_confirmation" placeholder="Confirm your password" required>
+                                @error('password_confirmation')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <!-- Password Requirements -->
+                        <div id="password-contain" class="p-3 bg-light mb-2 rounded">
+                            <h5 class="fs-13">Password must contain:</h5>
+                            <p id="pass-length" class="invalid fs-12 mb-2">Minimum <b>8 characters</b></p>
+                            <p id="pass-lower" class="invalid fs-12 mb-2">At least <b>one lowercase</b> letter (a-z)</p>
+                            <p id="pass-upper" class="invalid fs-12 mb-2">At least <b>one uppercase</b> letter (A-Z)</p>
+                            <p id="pass-number" class="invalid fs-12 mb-0">At least <b>one number</b> (0-9)</p>
+                        </div>
+
+                        <!-- Terms and Conditions -->
+                        <div class="mb-4">
+                            <p class="mb-0 fs-12 text-muted fst-italic">By registering you agree to the Velzon <a href="#" class="text-primary text-decoration-underline fst-normal fw-medium">Terms of Use</a>.</p>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="mt-4">
+                            <button class="btn btn-success w-100" type="submit">Sign Up</button>
+                        </div>
+
+                        <!-- Social Media Signup -->
+                        <div class="mt-4 text-center">
+                            <div class="signin-other-title">
+                                <h5 class="fs-13 mb-4 title text-muted">Create account with</h5>
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-primary btn-icon waves-effect waves-light"><i class="ri-facebook-fill fs-16"></i></button>
+                                <button type="button" class="btn btn-danger btn-icon waves-effect waves-light"><i class="ri-google-fill fs-16"></i></button>
+                                <button type="button" class="btn btn-dark btn-icon waves-effect waves-light"><i class="ri-github-fill fs-16"></i></button>
+                                <button type="button" class="btn btn-info btn-icon waves-effect waves-light"><i class="ri-twitter-fill fs-16"></i></button>
+                            </div>
+                        </div>
+                    </form>
+
+
+                    {{-- <form class="" id="sign-up-form" method="POST" action="{{ route('create-account') }}">
+                        @csrf
+                        <div class="row mb-3">
+                            <!-- First Name -->
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="first_name" name="first_name" value="Parth" placeholder="Enter first name" required>
+                                @error('first_name')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <!-- Last Name -->
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter last name" required value="Khunt">
                                 <div class="invalid-feedback">Please enter your last name.</div>
                             </div>
                         </div>
@@ -40,13 +137,13 @@
 
                             <!-- Username -->
                             <div class="col-md-6">
-                                <input type="text" class="form-control" id="user_name" name="user_name" placeholder="Enter username" required>
+                                <input type="text" class="form-control" id="user_name" name="user_name" placeholder="Enter username" required value="Parth@2024">
                                 <div class="invalid-feedback">Please enter a username.</div>
                             </div>
 
                             <!-- Email -->
                             <div class="col-md-6">
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" required>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" required value="Parth@gmail.com">
                                 <div class="invalid-feedback">Please enter a valid email address.</div>
                             </div>
 
@@ -58,7 +155,7 @@
                             <div class="col-md-6">
 
                                 <div class="position-relative auth-pass-inputgroup">
-                                    <input type="password" class="form-control pe-5 password-input" id="password" name="password" placeholder="Enter password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                                    <input type="password" class="form-control pe-5 password-input" id="password" name="password" placeholder="Enter password" required >
                                     <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon material-shadow-none" type="button" id="password-addon">
                                         <i class="ri-eye-fill align-middle"></i>
                                     </button>
@@ -104,7 +201,7 @@
                                 <button type="button" class="btn btn-info btn-icon waves-effect waves-light"><i class="ri-twitter-fill fs-16"></i></button>
                             </div>
                         </div>
-                    </form>
+                    </form> --}}
                 </div>
             </div>
             <!-- End card body -->
