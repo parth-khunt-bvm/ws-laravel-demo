@@ -1,10 +1,13 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
-$adminPrefix = "";
-// Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
-    Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-// });
+use App\Http\Controllers\DashboardController;
 
+Route::prefix('admin')
+    ->middleware(['admin']) // Correct alias
+    ->group(function () {
+        Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+    });
+
+Route::get('orders', [DashboardController::class, 'appsorders'])->name('orders');
 ?>

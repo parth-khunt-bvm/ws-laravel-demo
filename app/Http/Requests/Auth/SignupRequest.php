@@ -56,7 +56,7 @@ class SignupRequest extends FormRequest
     public function addUser(){
         $objSpeciality = new User($this->validated());
         if ($objSpeciality->save()) {
-            return ['status' => 'success', 'message' => 'Speciality added successfully.', 'redirect' => route('sign-in')];
+            return ['status' => 'success', 'message' => 'Account created successfully.', 'redirect' => route('sign-in')];
         } else {
             return ['status' => 'danger', 'message' => 'Something went wrong while saving the speciality.'];
         }

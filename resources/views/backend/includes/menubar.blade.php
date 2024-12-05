@@ -60,11 +60,37 @@
                 </a>
              </li>
              <!-- end Dashboard Menu -->
+             <li class="nav-item">
+                <a href="#sidebarEcommerce" class="nav-link active collapsed" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarEcommerce" data-key="t-ecommerce">
+                    Ecommerce
+                </a>
+                <div class="menu-dropdown collapse" id="sidebarEcommerce" style="">
+                    <ul class="nav nav-sm flex-column">
+                        <li class="nav-item">
+                            <a href="{{ route('orders') }}" class="nav-link" data-key="t-products"> Orders </a>
+                        </li>
 
+                        <li class="nav-item">
+                            <a href="apps-ecommerce-add-product.html" class="nav-link" data-key="t-create-product"> Order Details </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="apps-ecommerce-customers.html" class="nav-link" data-key="t-customers"> Customers </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="apps-ecommerce-cart.html" class="nav-link" data-key="t-shopping-cart"> Shopping Cart </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="apps-ecommerce-checkout.html" class="nav-link" data-key="t-checkout"> Checkout </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
              <!-- end Dashboard Menu -->
 
 
-             
+
           </ul>
        </div>
        <!-- Sidebar -->
